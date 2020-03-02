@@ -1,0 +1,19 @@
+.TodoInsert {
+  display: flex;
+  input {
+    border: none;
+    padding: 0.5rem;
+    flex: 1;
+  }
+  flex: 1;
+}
+
+button {
+  background: none;
+  outline: none;
+  border: none;
+  background: #4f4fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
