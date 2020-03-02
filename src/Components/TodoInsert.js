@@ -6,8 +6,16 @@ import { observer } from "mobx-react";
 class TodoInsert extends Component {
   render() {
     return (
-      <form className="TodoInsert">
-        <input placeholder="할 일을 입력하세요" />
+      <form
+        className="TodoInsert"
+        onSubmit={this.props.onSubmit}
+        value={this.props.value}
+      >
+        <input
+          placeholder="할 일을 입력하세요"
+          onChange={this.props.onChange}
+          value={this.props.value}
+        />
         <button type="submit">
           <MdAdd />
         </button>

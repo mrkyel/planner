@@ -12,6 +12,7 @@
   padding-left: 1rem;
   svg {
     font-size: 1.5rem;
+    cursor: pointer;
   }
   .text {
     margin-left: 0.5rem;
@@ -21,6 +22,7 @@
 .checked {
   svg {
     color: rgb(63, 11, 184);
+    cursor: pointer;
   }
   .text {
     text-decoration: line-through;
@@ -30,4 +32,5 @@
 
 .remove {
   padding: 0.5rem;
+  cursor: pointer;
 }

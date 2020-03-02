@@ -6,11 +6,19 @@ import globalState from "../config/mobx";
 
 class TodoList extends Component {
   mobx = globalState.todoList;
+
+  onToggle = id => {
+    console.log(this.props.id);
+    console.log(
+      this.props.value.map(todo => (todo.id === id ? alert("dtd") : null))
+    );
+  };
+
   render() {
     return (
       <div className="TodoList">
-        {this.mobx.map(todo => (
-          <TodoListItem todo={todo} key={todo.id} />
+        {this.props.value.map(todo => (
+          <TodoListItem todo={todo} key={todo.id} onToggle={this.onToggle} />
         ))}
       </div>
     );

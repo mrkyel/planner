@@ -12,16 +12,15 @@ class TodoListItem extends Component {
   mobx = globalState.todoList;
 
   render() {
-    console.log(this.props.todo.checked);
     return (
       <div className="TodoListItem">
         {this.props.todo.checked ? (
-          <div className="checkBox checked">
+          <div className="checkBox checked" onClick={this.props.onToggle}>
             <MdCheckBox />
             <div className="text">{this.props.todo.text}</div>
           </div>
         ) : (
-          <div className="checkBox">
+          <div className="checkBox" onClick={this.props.onToggle}>
             <MdCheckBoxOutlineBlank />
             <div className="text">{this.props.todo.text}</div>
           </div>

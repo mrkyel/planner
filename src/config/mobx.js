@@ -15,10 +15,11 @@ const globalState = observable({
     },
     {
       id: 3,
-      text: "몹엑스는 또 왜이리 어렵",
+      text: "몹엑스는 또 왜이리 어렵지",
       checked: false
     }
-  ]
+  ],
+  id: 4
 });
 
 export default globalState;
