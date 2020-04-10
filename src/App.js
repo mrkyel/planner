@@ -8,19 +8,26 @@ import globalState from "./config/mobx";
 class App extends Component {
   mobx = globalState;
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.mobx.input = e.target.value;
     console.log(this.mobx.input);
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     this.mobx.todoList = this.mobx.todoList.concat({
       id: this.mobx.id++,
       text: this.mobx.input,
-      checked: false
+      checked: false,
     });
     e.preventDefault();
     this.mobx.input = "";
+  };
+
+  onToggle = (id) => {
+    console.log(id);
+    this.mobx.todoList = this.mobx.todoList.map((todo) =>
+      todo.id === id ? { ...todo, checked: !todo.checked } : todo
+    );
   };
 
   render() {
@@ -32,7 +39,7 @@ class App extends Component {
             value={this.mobx.input}
             onChange={this.handleChange}
           />
-          <TodoList value={this.mobx.todoList} />
+          <TodoList value={this.mobx.todoList} onToggle={this.onToggle} />
         </TodoListTemplate>
       </>
     );
