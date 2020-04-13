@@ -10,12 +10,19 @@ import { observer } from "mobx-react";
 import { decorate, action } from "mobx";
 
 class TodoListItem extends Component {
-  mobx = globalState.todoList;
+  mobx = globalState;
 
   onRemove = (id) => {
     console.log(id);
-    console.log(this.mobx.filter((todo) => todo.id !== id));
-    this.mobx = this.mobx.filter((todo) => todo.id !== id);
+    console.log(this.mobx.todoList.filter((todo) => todo.id !== id));
+    this.mobx.todoList = this.mobx.todoList.filter((todo) => todo.id !== id);
+  };
+
+  onToggle = (id) => {
+    console.log(id);
+    this.mobx.todoList = this.mobx.todoList.map((todo) =>
+      todo.id === id ? { ...todo, checked: !todo.checked } : todo
+    );
   };
 
   render() {
@@ -23,15 +30,13 @@ class TodoListItem extends Component {
       <div className="TodoListItem">
         {this.props.todo.checked ? (
           <div className="checkBox checked">
-            <MdCheckBox
-              onClick={() => this.props.onToggle(this.props.todo.id)}
-            />
+            <MdCheckBox onClick={() => this.onToggle(this.props.todo.id)} />
             <div className="text">{this.props.todo.text}</div>
           </div>
         ) : (
           <div className="checkBox">
             <MdCheckBoxOutlineBlank
-              onClick={() => this.props.onToggle(this.props.todo.id)}
+              onClick={() => this.onToggle(this.props.todo.id)}
             />
             <div className="text">{this.props.todo.text}</div>
           </div>
@@ -49,6 +54,7 @@ class TodoListItem extends Component {
 
 decorate(TodoListItem, {
   onRemove: action,
+  onToggle: action,
 });
 
 export default observer(TodoListItem);
