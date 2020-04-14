@@ -1,23 +1,12 @@
-import React, { Component } from "react";
-import TodoListTemplate from "./Components/TodoListTemplate";
-import TodoList from "./Components/TodoList";
-import TodoInsert from "./Components/TodoInsert";
-import { observer } from "mobx-react";
-import globalState from "./config/mobx";
+import React from "react";
+import TodosContainer from "./containers/TodosContainer";
 
-class App extends Component {
-  mobx = globalState;
+const App = () => {
+  return (
+    <>
+      <TodosContainer />
+    </>
+  );
+};
 
-  render() {
-    return (
-      <>
-        <TodoListTemplate>
-          <TodoInsert />
-          <TodoList />
-        </TodoListTemplate>
-      </>
-    );
-  }
-}
-
-export default observer(App);
+export default App;
