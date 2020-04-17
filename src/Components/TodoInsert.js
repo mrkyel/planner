@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import "./TodoInsert.scss";
 import { MdAdd } from "react-icons/md";
 
@@ -11,7 +11,7 @@ const TodoInsert = ({ onInsert, input, changeInput }) => {
       changeInput("");
       e.preventDefault();
     },
-    [onInsert, input]
+    [onInsert, changeInput, input]
   );
 
   return (
